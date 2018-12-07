@@ -43,7 +43,6 @@ def plotDataSet(dataset, xstart, ystart, xend, yend):
 def generateXORDataSet(numSamples, generateFloats=True):
     # Generates a dataset divided into 4 quadrants (XOR Dataset)
     # Set generateFloats to False to generate integer values only
-
     dataset = DataSet()
     for n in range(numSamples):
         # generate n sample points
@@ -68,7 +67,6 @@ def generateXORDataSet(numSamples, generateFloats=True):
 def generateGaussDist(cluster_points, samples_per_cluster, variance, generateFloats=True):
     # Generates a clustered distribution around given cluster points using gauss distribution
     # cluster_points is a list of ClusterPoints
-
     dataset = DataSet()
     for p in cluster_points:
             for s in range(0, samples_per_cluster):
