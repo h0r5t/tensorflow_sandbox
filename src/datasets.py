@@ -101,8 +101,6 @@ def generateGaussDist(cluster_points, samples_per_cluster, variance, space_width
                     rand_x = round(rand_x)
                     rand_y = round(rand_y)
 
-                print((rand_x, rand_y))
-
                 dataset.add(rand_x, rand_y, p.label)
     return dataset
 

@@ -26,9 +26,9 @@ class TF_Test():
 
 
 def tf_test():
-    # dataset_obj = datasets.generateXORDataSet(num_samples=80, space_width=20, generateFloats=False)
-    clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
-    dataset_obj = datasets.generateGaussDist(cluster_points=clusters, samples_per_cluster=30, variance=2, space_width=20, generateFloats=False)
+    dataset_obj = datasets.generateXORDataSet(num_samples=100, space_width=20, generateFloats=False)
+    #clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
+    #dataset_obj = datasets.generateGaussDist(cluster_points=clusters, samples_per_cluster=30, variance=2, space_width=20, generateFloats=False)
     data_list = np.asarray(dataset_obj.getDataList())
     label_list = np.asarray(dataset_obj.getLabelList())
 
@@ -36,9 +36,11 @@ def tf_test():
 
 
     model = keras.Sequential([
+        #Input Layer
         keras.layers.Dense(2, activation=tf.nn.tanh),
         keras.layers.Dense(4, activation=tf.nn.tanh),
         keras.layers.Dense(4, activation=tf.nn.tanh),
+        # Output Layer
         keras.layers.Dense(1, activation=None)
     ])
 
@@ -48,7 +50,7 @@ def tf_test():
               loss='mean_squared_error',
               metrics=['accuracy'])
 
-    model.fit(x=data_list, y=label_list, epochs=100)
+    model.fit(x=data_list, y=label_list, epochs=200, batch_size=10)
 
     # Testing
 
