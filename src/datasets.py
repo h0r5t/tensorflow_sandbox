@@ -108,10 +108,10 @@ def generateGaussDist(cluster_points, samples_per_cluster, variance, space_width
 
 
 if __name__ == '__main__':
-    dataset = generateXORDataSet(70, 20, generateFloats=False)
-    dataset.print()
-    plotDataSet(dataset)
+    #dataset = generateXORDataSet(70, 20, generateFloats=False)
+    #dataset.print()
+    #plotDataSet(dataset)
 
-    # clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-2, -3, 1)]
-    # dataset = generateGaussDist(clusters, 30, 2, generateFloats=False)
-    # plotDataSet(dataset)
+    clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
+    dataset = generateGaussDist(cluster_points=clusters, samples_per_cluster=30, variance=2, space_width=20, generateFloats=False)
+    plotDataSet(dataset)

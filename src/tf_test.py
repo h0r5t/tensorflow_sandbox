@@ -3,7 +3,8 @@ from tensorflow import keras
 import numpy as np
 import random
 
-import dataset
+import datasets
+from datasets import ClusterPoint
 
 
 class TF_Test():
@@ -25,17 +26,19 @@ class TF_Test():
 
 
 def tf_test():
-    dataset_obj = dataset.generateXORDataSet(num_samples=80, space_width=20, generateFloats=False)
+    # dataset_obj = datasets.generateXORDataSet(num_samples=80, space_width=20, generateFloats=False)
+    clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
+    dataset_obj = datasets.generateGaussDist(cluster_points=clusters, samples_per_cluster=30, variance=2, space_width=20, generateFloats=False)
     data_list = np.asarray(dataset_obj.getDataList())
     label_list = np.asarray(dataset_obj.getLabelList())
 
-    dataset.plotDataSet(dataset_obj)
+    datasets.plotDataSet(dataset_obj)
 
 
     model = keras.Sequential([
         keras.layers.Dense(2, activation=tf.nn.tanh),
         keras.layers.Dense(4, activation=tf.nn.tanh),
-        keras.layers.Dense(2, activation=tf.nn.tanh),
+        keras.layers.Dense(4, activation=tf.nn.tanh),
         keras.layers.Dense(1, activation=None)
     ])
 
@@ -45,7 +48,7 @@ def tf_test():
               loss='mean_squared_error',
               metrics=['accuracy'])
 
-    model.fit(x=data_list, y=label_list, epochs=300)
+    model.fit(x=data_list, y=label_list, epochs=100)
 
     # Testing
 
