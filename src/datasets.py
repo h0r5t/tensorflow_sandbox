@@ -22,6 +22,9 @@ class DataSet():
             return self.dataPoints[(x, y)]
         return None
 
+    def getPoints(self):
+        return self.dataPoints
+
     def getSize(self):
         return len(self.data_list)
 
