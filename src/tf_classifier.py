@@ -7,6 +7,8 @@ import datasets
 from datasets import ClusterPoint
 
 
+# Simples neuronales Netz zur Klassifizierung von Punkten mit 2 Merkmalen (x und y)
+
 class TensorflowClassifierExample():
 
     def __init__(self):
@@ -58,6 +60,8 @@ class TensorflowClassifierExample():
 
 
 if __name__ == '__main__':
+        # Generiere 2 Datensets für Training und Testing
+        #   Simples XOR-Datenset bzw. Cluster-Datenset
         dataset_obj = datasets.generateXORDataSet(num_samples=100, space_width=20, generateFloats=False)
         #clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
         #dataset_obj = datasets.generateGaussDist(cluster_points=clusters, samples_per_cluster=30, variance=2, space_width=20, generateFloats=False)
