@@ -58,7 +58,7 @@ def plotDataSet(dataset):
     for y in range(ystart, yend):
         for x in range(xstart, xend):
             label = dataset.get(x, y)
-            if label == 0:
+            if label == -1:
                 print("o", end="  ")
             elif label == 1:
                 print("x", end="  ")
@@ -84,7 +84,7 @@ def generateXORDataSet(num_samples, space_width, generateFloats=True):
         if x * y == 0:
             continue
 
-        label = 0
+        label = -1
         if x * y > 0:
             label = 1
 
@@ -113,6 +113,6 @@ if __name__ == '__main__':
     #dataset.print()
     #plotDataSet(dataset)
 
-    clusters = [ClusterPoint(5, -5, 0), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
+    clusters = [ClusterPoint(5, -5, -1), ClusterPoint(2, 4, 1), ClusterPoint(-5, -3, 1)]
     dataset = generateGaussDist(cluster_points=clusters, samples_per_cluster=30, variance=2, space_width=20, generateFloats=False)
     plotDataSet(dataset)
