@@ -5,7 +5,7 @@ import numpy as np
 
 CANVAS_SIZE = 800
 LABEL_COLORS = { -1:"#FF0000", 1:"#0000FF" }
-DRAW_AXIS = False
+DRAW_AXIS = True
 
 
 def visualizeDataset(dataset):
@@ -29,8 +29,9 @@ def visualizeDataset(dataset):
 
 
 def visualizeClassification(tf_model, dataset):
+    print("\nPreparing classifier visualization...")
     space_width = dataset.space_width
-    delta = 0.2
+    delta = 0.25
     delta_translated = CANVAS_SIZE / (space_width / delta)
 
     root = tkinter.Tk()
@@ -78,14 +79,3 @@ def translateToScreen(x, y, space_width):
     x = (x * CANVAS_SIZE / space_width) + (CANVAS_SIZE / 2)
     y = (y * CANVAS_SIZE / space_width) + (CANVAS_SIZE / 2)
     return x, y
-
-
-if __name__ == '__main__':
-    # dataset = generateXORDataSet(300, 20, True)
-    # visualizeDataset(dataset)
-
-    visualizeClassification(None, 20)
-
-    # clusters = [ClusterPoint(5, -7, 0), ClusterPoint(2, 6, 1), ClusterPoint(-6, -3, 1)]
-    # dataset = generateGaussDist(cluster_points=clusters, samples_per_cluster=200, variance=5, space_width=30, generateFloats=True)
-    # visualizeDataset(dataset)
